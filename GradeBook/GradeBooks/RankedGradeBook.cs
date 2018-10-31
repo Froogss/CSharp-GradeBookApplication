@@ -33,6 +33,7 @@ namespace GradeBook.GradeBooks
                     return outputGrades[i];
                 }
             }
+            return 'F';
             
             
 
