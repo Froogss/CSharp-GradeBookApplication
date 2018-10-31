@@ -21,26 +21,17 @@ namespace GradeBook.GradeBooks
 
             var threshold = (int)Math.Ceiling(Students.Count * 0.2);
             var grades = Students.OrderByDescending(e => e.AverageGrade).Select(e => e.AverageGrade).ToList();
+            List<char> outputGrades = new List<char> { 'A', 'B', 'C', 'D' };
 
-            if (grades[threshold - 1] < averageGrade)
+            for (int i=0;i<6;i++)
             {
-                return 'A';
-            }
-            else if (grades[threshold*2 - 1] < averageGrade)
-            {
-                return 'B';
-            }
-            else if (grades[threshold*3 - 1] < averageGrade)
-            {
-                return 'C';
-            }
-            else if (grades[threshold*4 - 1] < averageGrade)
-            {
-                return 'D';
-            }
-            else
-            {
-                return 'F';
+                double grade = grades[i];
+                if (grade > averageGrade) continue;
+                else
+                {
+                    if (grade == 5) return '5';
+                    return outputGrades[i];
+                }
             }
             
             
